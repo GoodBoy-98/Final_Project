@@ -1,0 +1,21 @@
+1. Anaconda 환경생성
+conda create -n py37 python=3.7
+conda activate py37
+
+2. 패키지설치
+pip install -r requirements.txt 
+
+3. 학습
+python main.py --mode train --sex 남성 --residence 세종시 --age 20대
+
+4. 추론을 위한 데이터 생성
+python make_inference_data.py  (<< 코드를 살펴보면 샘플로 3개 정도 아무거나 넣어 놨음) 
+
+5. 추론
+python main.py --mode inference --sex 남성 --residence 세종시 --age 20대
+[참고] model폴더 내 남성_label_map.json  (혹은 여성 모델 학습 시엔 여성_label_map.json) 
+을 살펴보면 추론 결과 숫자로 나오는 값에 대한 원래 메뉴이름이 맵핑돼 있음 
+
+* [고찰]
+데이터 수에 비해 Menu의 카테고리 수가 80여가지로 너무 많아서 정확도 같은게 정밀하진 않음
+ >> 성별 별, 요일 별, 시간 대별 각각에 대해서 데이터가 훨씬 많이 쌓이면 정확도 상승 예상 
